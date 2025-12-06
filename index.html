@@ -1,152 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me</title>
+  <meta charset="UTF-8">
+  <title>My Personal Page</title>
 
-    <style>
-        /* —— 全站柔色主题 —— */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(180deg, #f4f8fc, #dce7f3); /* 雾霾蓝 + 奶油白渐变 */
-            color: #2e3a45;
-        }
+<!-- 
+GenAI usage: 
+- Tool: ChatGPT (OpenAI) 
+- Assistance: 
+* Helped refine visual design (colors, shadows, spacing) on an existing single-page layout 
+- All content, images, and final adjustments should be done by me. 
+-->
 
-        /* —— 1200px 中心容器 —— */
-        .container {
-            width: 1200px;
-            margin: 0 auto;
-            padding-top: 40px;
-        }
+  <style>
+    /* ---- Skills Section ---- */
+#skills {
+  background: var(--color-section-alt);
+  padding: 60px 40px;
+}
 
-        /* —— 导航栏 —— */
-        header {
-            background: linear-gradient(90deg, #dce2dd, #c9d5d0); /* 豆沙绿柔色渐变 */
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #c7cec8;
-        }
+.skills-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
 
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            color: #2e3a45;
-            transition: 0.3s;
-        }
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  font-size: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-        nav a:hover {
-            color: #6a8f89;
-        }
+.skills-table th {
+  background: var(--color-primary);
+  color: white;
+  padding: 14px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
 
-        /* —— 标题 —— */
-        h1 {
-            font-size: 36px;
-            margin-top: 10px;
-            text-align: center;
-        }
+.skills-table td {
+  padding: 14px;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  color: var(--color-text-main);
+}
 
-        /* —— 卡片样式 —— */
-        .card {
-            background: #ffffffcc; /* 白色加轻微透明 */
-            padding: 30px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
-            border-left: 6px solid #b7cfc7; /* 柔绿色边框 */
-        }
+.skills-table tr:nth-child(even) td {
+  background: #f1f6ff;
+}
 
-        h2 {
-            margin-top: 0;
-            color: #3d4f57;
-        }
+.skills-table tr:hover td {
+  background: #e4edff;
+  transition: 0.2s;
+}
 
-        /* —— 表格（作业要求） —— */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 16px;
-        }
+    :root {
+      --color-bg-page: #e8f1ff;
+      --color-bg-container: #ffffff;
+      --color-primary: #1a73e8;
+      --color-primary-dark: #0c47a1;
+      --color-text-main: #333333;
+      --color-text-muted: #666666;
+      --color-section-alt: #f7f9fc;
+    }
 
-        table, td, th {
-            border: 1px solid #cbd5df;
-        }
+    /* Overall basic style */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, var(--color-bg-page), #ffffff);
+      color: var(--color-text-main);
+    }
 
-        td, th {
-            padding: 10px 12px;
-        }
+   /* Core: 1200px wide container, centered + shadow + rounded corners */
+    .container {
+      width: 1200px;
+      margin: 40px auto;
+      background-color: var(--color-bg-container);
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      overflow: hidden; 
+    }
 
-        th {
-            background: #e8f0f4;
-        }
-    </style>
+    header, footer {
+      padding: 20px 40px;
+    }
+
+    main section {
+      padding: 40px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, serif;
+      margin-top: 0;
+      color: var(--color-text-main);
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      margin: 0 0 12px;
+    }
+
+   /* General link styles (four states) */
+    a:link {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: var(--color-primary-dark);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:active {
+      opacity: 0.8;
+    }
+
+    /*Top navigation bar */
+    nav {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-list li {
+      display: inline-block;
+    }
+
+    .nav-list a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 4px 2px;
+      position: relative;
+    }
+
+    /* Navigation hover underline animation */
+    .nav-list a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav-list a:hover::after {
+      width: 100%;
+    }
+
+    /* Home*/
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-image {
+      flex: 1;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero h3 {
+      margin-top: 4px;
+      color: var(--color-primary-dark);
+    }
+
+    .hero p {
+      font-size: 16px;
+    }
+
+   /* Underlined section headings */
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 999px;
+    }
+
+  /* Card style: Add shadows and rounded corners to the block */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+
+ /* The background of the About section is slightly different */
+    .about {
+      background-color: var(--color-section-alt);
+    }
+
+    .about img {
+      margin-top: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+ /* Sample layout for the Projects section */
+    .project {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .project img {
+      flex-shrink: 0;
+      width: 260px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .project-text h3 {
+      margin-top: 0;
+    }
+
+  /* Info section: background + reserved table style */
+    .info {
+      background-color: var(--color-section-alt);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .info-table th {
+      background-color: #eef3ff;
+      font-weight: bold;
+    }
+
+    .contact a {
+      font-weight: bold;
+    }
+
+    .contact p {
+      margin-bottom: 8px;
+    }
+
+    /* footer */
+    footer {
+      font-size: 12px;
+      color: #777;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding-top: 16px;
+      padding-bottom: 30px;
+      background-color: #ffffff;
+    }
+
+    @media (max-width: 1280px) {
+      .container {
+        margin: 20px auto;
+      }
+
+      .hero {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-    <!-- —— 导航栏 —— -->
+  <div class="container">
+   <!-- Top: Navigation -->
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#info">Info</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <!-- —— 页面内容 —— -->
-    <div class="container">
-        
-        <h1>About Me</h1>
-
-        <div class="card">
-            <h2>Who I Am</h2>
+    <main>
+      <!-- Section 1: Home / Hero -->
+      <section id="home">
+        <div class="hero">
+          <div class="hero-text">
+            <h1>Qing Zhen</h1>
+            <h3>Idea collector & practitioner</h3>
             <p>
-                Hi! I'm [Your Name], and this is the personal website I designed for my course project.  
-                I enjoy creating clean and minimalistic digital designs, exploring technology, and building simple but elegant websites.
+             I studied Global Business and Digital Arts at the University of Waterloo, focusing on UX/UI design. My interests include digital art, interface design, and user experience, and I aspire to create products that are both aesthetically pleasing and functional.
             </p>
+          </div>
+          <div class="hero-image">
+    
+            <img src="hero-image.JPG" width="400" height="120" alt="">
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: About -->
+      <section id="about" class="about">
+        <div class="card">
+          <h2 class="section-title">About Me</h2>
+          <p>
+           This is my seventh year living in Canada. I love traveling, photography, and painting, and I enjoy telling stories visually. I specialize in UX/UI design and enjoy combining creativity and technology to create beautiful and functional digital experiences. I speak two languages and love drawing inspiration from different cultures to make every design meaningful.
+          </p>
+
+        
+          <img src="1.JPG" width="250" height="160" alt="">
+          <img src="11.JPG" width="250" height="160" alt="">
+          <img src="111.JPG" width="250" height="160" alt="">
+          <img src="1111.JPG" width="250" height="160" alt="">
+        </div>
+      </section>
+
+      <!-- Section 3: Projects -->
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="card">
+          <div class="project">
+            <img src="p1.jpg" alt="Project 1 preview">
+            <div class="project-text">
+              <h3>When We Come Together</h3>
+              <p>
+               This year, we were fortunate to be selected to participate in the Light on Stratford light show and create the project "When We Come Together." Designed around the theme of reconciliation, the work is an interactive microwall. Viewers' actions and touches trigger changes in the lighting, symbolizing the connection and understanding between different individuals. Through this piece, we hope that viewers will not only appreciate the beauty of light but also reflect on the reconciliation and integration between people and cultures.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="card">
-            <h2>My Interests</h2>
-            <p>Here are a few areas I'm passionate about:</p>
-            <ul>
-                <li>🎨 Art & Aesthetics</li>
-                <li>💻 Web Development</li>
-                <li>📚 Reading & Learning</li>
-                <li>🌿 Nature & Photography</li>
-            </ul>
+          <div class="project">
+            <img src="p2.jpg" alt="Project 2 preview">
+            <div class="project-text">
+              <h3>Project 2</h3>
+              <p>
+               Earlier this year, my team and I created an interactive game about accessibility and health, designed to help players identify and understand food allergies. Through an interactive experience, the game allows users to learn about food allergies in a safe and fun environment, raising awareness of accessibility and healthy eating.
+              </p>
+            </div>
+          </div>
         </div>
 
+
+      </section>
+
+  <!-- SKILLS -->
+<section id="skills">
+  <div class="skills-card">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p>Here are my skills and proficiency levels:</p>
+
+    <table class="skills-table">
+      <tr><th>Category</th><th>Skill</th><th>Proficiency</th></tr>
+      <tr><td>Web Development</td><td>HTML</td><td>Intermediate</td></tr>
+      <tr><td>Web Development</td><td>Figma</td><td>Intermediate</td></tr>
+      <tr><td>Design Software</td><td>Adobe Photoshop / Illustrator</td><td>Advanced</td></tr>
+      <tr><td>3D Modeling</td><td>Blender</td><td>Advanced</td></tr>
+      <tr><td>Office / Data Tools</td><td>Excel</td><td>Intermediate</td></tr>
+      <tr><td>Programming Languages</td><td>Python</td><td>Familiar</td></tr>
+      <tr><td>Programming Languages</td><td>C++</td><td>Familiar</td></tr>
+    </table>
+  </div>
+</section>
+
+
+      <!-- Section 5: Contact -->
+      <section id="contact" class="contact">
         <div class="card">
-            <h2>More About Me</h2>
-            <p>Some quick facts:</p>
+          <h2 class="section-title">Contact</h2>
+          <p>
+           If you would like to contact me, you can do so through the following methods:
+          </p>
 
-            <!-- 作业要求：表格 -->
-            <table>
-                <tr>
-                    <th>Category</th>
-                    <th>Details</th>
-                </tr>
-                <tr>
-                    <td>Program</td>
-                    <td>[Your Program / Major]</td>
-                </tr>
-                <tr>
-                    <td>Hobbies</td>
-                    <td>Drawing, web design, reading, exploring new ideas</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><a href="mailto:yourname@uwaterloo.ca">yourname@uwaterloo.ca</a></td>
-                </tr>
-            </table>
+          <p>
+            Email：
+            <a href="q2zhen@uwaterloo.ca">q2zhen@uwaterloo.ca</a>
+          </p>
+
+          <p>
+            Favourite website / External link：
+            <a href="https://www.uwaterloo.ca" target="_blank">University of Waterloo</a>
+          </p>
+
         </div>
+      </section>
+    </main>
 
-    </div>
-
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
